@@ -1,0 +1,43 @@
+<p>
+	<strong>First name:</strong>
+	<%= @user.first_name %>
+</p>
+<p>
+	<strong>Last name:</strong>
+	<%= @user.last_name %>
+</p>
+<p>
+	<strong>Email:</strong>
+	<%= @user.email %>
+</p>
+<p>
+	<strong>Company:</strong>
+	<%= @user.company_id %>
+</p>
+<p>
+	<strong>Monthly:</strong>
+	<%= @user.monthly_charge %>
+</p>
+<p>
+	<strong>Role</strong>
+	<%= @user.rol_id%>
+</p>
+<p>
+	<strong>StartDate:</strong>
+	<%= @user.start_date %>
+</p>
+<p>
+	<strong>EndDate:</strong>
+	<%= @user.end_date %>
+</p>
+<p>
+	<strong>Active:</strong>
+	<%= @user.active %>
+</p>
+<p>
+	<strong>Notes:</strong>
+	<%=	raw @user.notes%>
+</p>
+<div>
+	<%= link_to 'Back' , new_user_path, :class=> "btn btn-outline-danger"%>
+</div>
