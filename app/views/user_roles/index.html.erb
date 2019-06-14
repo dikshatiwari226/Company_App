@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center"><h1>List of Users Role</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>User Role Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each  do |user|%>
+		<tr>
+			<td><%= user.role_name %></td>
+			<td><%= link_to 'Show',  user_role_path(user) %></td>
+			<td><%= link_to 'Edit', edit_user_role_path(user) %></td>
+			<td><%= link_to 'Delete',  user_role_path(user), method: :delete, data: {confirm: 'Are You Sure'} %></td>
+		</tr>
+		<div>
+		</div>
+		<% end %>
+	</tbody>
+</table>

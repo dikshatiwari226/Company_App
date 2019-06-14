@@ -1,4 +1,6 @@
-<table class="table table-striped table-bordered">
+<div class="d-flex justify-content-center"><h1>List of Companies</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -22,7 +24,7 @@
 			<td><%= c.state_id %></td>
 			<td><%= c.city_id %></td>
 			<td><%= c.postcode %></td>
-			<td><%= c.start_date%></td>
+			<td><%= c.startdate%></td>
 			<td><%= c.active %></td>
 			<td><%= link_to 'Show',  company_path(c) %></td>
 			<td><%= link_to 'Edit', edit_company_path(c) %></td>

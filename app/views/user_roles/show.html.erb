@@ -1,0 +1,24 @@
+<!-- <div class="d-flex justify-content-center"><h1>User Role</h1></div><br>
+<%= form_with scope: :user_role, url:  user_role_path, local: true  do |f| %>
+	
+	<div class="form-group d-flex justify-content-center">
+			<%= f.label :role_name, "Role Name:", class: "control-label col-md-3"%>
+			<%= f.text_field :role_name, class: "form-control col-md-8" %>
+	</div>
+
+	<div class="offset-md-5">
+			<%= f.submit "Save", class: "btn btn-primary" %>
+			<%= f.submit "Cancel", class: " btn btn-info" %>
+			<%= link_to 'Back' , users_path, class: " btn btn-success"%>
+	</div>
+<% end %> -->
+
+<div class="d-flex justify-content-center"><h1>Show Comapny</h1></div><br>
+<p>
+	<strong>Role name:</strong>
+	<%= @user.role_name %>
+</p>
+
+<div>
+	<%= link_to 'Back' , user_roles_path, :class=> "btn btn-outline-danger"%>
+</div>

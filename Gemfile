@@ -64,4 +64,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'ckeditor'
+gem 'ckeditor_rails'

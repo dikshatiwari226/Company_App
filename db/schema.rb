@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_091106) do
+ActiveRecord::Schema.define(version: 2019_06_14_115738) do
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "startdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -18,8 +25,14 @@ ActiveRecord::Schema.define(version: 2019_06_13_091106) do
     t.integer "state_id"
     t.integer "city_id"
     t.string "postcode"
-    t.datetime "start_date"
+    t.datetime "startdate"
     t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.string "role_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,4 +1,5 @@
-<h1>Edit Company</h1>
+<div class="d-flex justify-content-center"><h1>Edit Company</h1></div><br>
+
 <%= form_with(model: @company, local: true) do |f| %>
 	<div class="container">
 	<div class="row">
@@ -41,7 +42,7 @@
           <div class="form-group">
           		<%= f.label :StartDate, :class=> "col-form-labe" %>
             	<div class='input-group date' id='datepicker1'>
-              	<%= f.text_field :start_date, :class=>"datepicker" %>
+              	<%= f.text_field :startdate, :class=>"datepicker" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>

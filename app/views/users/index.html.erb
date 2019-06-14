@@ -1,4 +1,6 @@
-<table class="table table-striped table-bordered">
+<div class="d-flex justify-content-center"><h1>List of Users</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
 	<thead>
 		<tr>
 			<th>First Name</th>
@@ -28,7 +30,7 @@
 			<td><%= u.start_date%></td>
 			<td><%= u.end_date	%></td>
 			<td><%= u.active %></td>
-			<td><%= u.notes %></td>
+			<td><%= u.notes%></td>
 			<td><%= link_to 'Show',  user_path(u) %></td>
 			<td><%= link_to 'Edit', edit_user_path(u) %></td>
 			<td><%= link_to 'Delete',  user_path(u), method: :delete, data: {confirm: 'Are You Sure'} %></td>
