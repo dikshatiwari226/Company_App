@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center"><h1>List of Countries</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>Country Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @countries.each  do |country|%>
+		<tr>
+			<td><%= country.country_name %></td>
+			<td><%= link_to 'Show',  country_path(country) %></td>
+			<td><%= link_to 'Edit', edit_country_path(country) %></td>
+			<td><%= link_to 'Delete',  country_path(country), method: :delete, data: {confirm: 'Are You Sure'} %></td>
+		</tr>
+		<div>
+		</div>
+		<% end %>
+	</tbody>
+</table>

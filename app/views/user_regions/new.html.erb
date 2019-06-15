@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center"><h1>Create User and Region</h1></div><br>
+<%= form_with scope: :user_region, url: user_regions_path, local: true  do |f| %>
+
+	<div class="form-group col-md-4">
+		<%= f.label :User %>
+		<%= f.select :user_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+	</div>
+	<div class="form-group col-md-4">
+		<%= f.label :Region %>
+		<%= f.select :region_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+	</div>
+	<div class="offset-md-5">
+		<%= f.submit "Save", class: "btn btn-primary" %>
+		<%= f.submit "Cancel", class: " btn btn-info" %>
+		<%= link_to 'Back' ,  user_regions_path, class: " btn btn-success"%>
+	</div>
+
+<% end %>

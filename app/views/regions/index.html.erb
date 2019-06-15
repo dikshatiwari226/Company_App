@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center"><h1>List of Regions</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>Region Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @regions.each  do |r|%>
+		<tr>
+			<td><%= r.region_name %></td>
+			<td><%= link_to 'Show',  region_path(r) %></td>
+			<td><%= link_to 'Edit', edit_region_path(r) %></td>
+			<td><%= link_to 'Delete',  region_path(r), method: :delete, data: {confirm: 'Are You Sure'} %></td>
+		</tr>
+		<div>
+		</div>
+		<% end %>
+	</tbody>
+</table>

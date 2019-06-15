@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center"><h1>Edit Country</h1></div><br>
+<%= form_with(model: @city, local: true) do |f| %>	
+	<div class="form-group d-flex justify-content-center">
+			<%= f.label :city_name, "City Name:", class: "control-label col-md-3"%>
+			<%= f.text_field :city_name, class: "form-control col-md-8" %>
+	</div>
+
+	<div class="offset-md-5">
+			<%= f.submit "Save", class: "btn btn-primary" %>
+			<%= f.submit "Cancel", class: " btn btn-info" %>
+			<%= link_to 'Back' , city_index_path, class: " btn btn-success"%>
+	</div>
+<% end %>

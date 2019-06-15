@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center"><h1>Create State</h1></div><br>
+<%= form_with scope: :state, url: state_index_path,	local: true  do |f| %>
+	
+	<div class="form-group d-flex justify-content-center">
+			<%= f.label :state_name, "State name:", class: "control-label col-md-3"%>
+			<%= f.text_field :state_name, class: "form-control col-md-8" %>
+	</div>
+
+	<div class="offset-md-5">
+			<%= f.submit "Save", class: "btn btn-primary" %>
+			<%= f.submit "Cancel", class: "btn btn-info" %>
+			<%= link_to 'Back' , state_index_path, class: " btn btn-success"%>
+	</div>
+<% end %>
