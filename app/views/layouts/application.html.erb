@@ -9,7 +9,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body>  
+    <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>
+          <%= link_to 'Edit Profile', edit_user_registration_path, :class=>'navbar-link' %> |
+          <%= link_to 'Logout',   destroy_user_session_path, :class=>'navbar-link' %> |
+          <%= link_to 'AddCompany', new_company_path, :class=>'navbar-link' %>|
+          <%= link_to 'AddCity', new_city_path, :class=>'navbar-link' %>|
+          <%= link_to 'AddCountry', new_country_path, :class=>'navbar-link' %> |
+          <%= link_to 'Images', new_image_path, :class=>'navbar-link' %>|
+          <%= link_to 'Nodes', new_node_path, :class=>'navbar-link' %>|
+          <%= link_to 'Place', new_place_path, :class=>'navbar-link' %> |
+          <%= link_to 'Region', new_region_path, :class=>'navbar-link' %>|
+          <%= link_to 'State', new_state_path, :class=>'navbar-link' %>|
+          <%= link_to 'User_Region', new_user_region_path, :class=>'navbar-link' %>|
+          <%= link_to 'User_Roles', new_user_role_path, :class=>'navbar-link' %>
+
+
+        <%  else  %>
+        <%= link_to "Sign up", new_user_registration_path, :class=>'navbar-link' %> |
+        <%= link_to "Login", new_user_session_path, :class=>'navbar-link' %>
+      <%  end %>
+    </p>
+
+   
     <%= yield %>
   </body>
 </html>

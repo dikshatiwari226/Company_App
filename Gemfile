@@ -65,3 +65,5 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'ckeditor_rails'
+
+gem 'devise'

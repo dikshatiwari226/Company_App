@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center"><h1>List of Images</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>User Id</th>
+			<th>Real Name</th>
+			<th>Image Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @images.each  do |img|%>
+		<tr>
+			<td><%= img.user_id %></td>
+			<td><%=	img.real_name %></td>
+			<td><%=	img.image_name %></td>
+			<td><%= link_to 'Show',  image_path(img) %></td>
+			<td><%= link_to 'Edit', edit_image_path(img) %></td>
+			<td><%= link_to 'Delete',  image_path(img), method: :delete, data: {confirm: 'Are You Sure'} %></td>
+		</tr>
+		<div>
+		</div>
+		<% end %>
+	</tbody>
+</table>

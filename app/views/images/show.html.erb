@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center"><h1>Show Image </h1></div><br>
+<p>
+	<strong>User Id:</strong>
+	<%= @image.try(:user_id) %>
+</p>
+
+<p>
+	<strong>Real Name:</strong>
+	<%=	@image.try(:real_name) %>
+</p>
+
+<p>
+	<strong>Image Name:</strong>
+	<%= @image.try(:image_name) %>
+</p>
+
+<div>
+	<%= link_to 'Back' , images_path, :class=> "btn btn-outline-danger"%>
+</div>

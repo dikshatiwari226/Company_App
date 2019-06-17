@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_130304) do
+ActiveRecord::Schema.define(version: 2019_06_17_103906) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -43,6 +43,28 @@ ActiveRecord::Schema.define(version: 2019_06_15_130304) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "real_name"
+    t.string "image_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nodes", force: :cascade do |t|
+    t.string "node_name"
+    t.integer "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "place_name"
+    t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string "region_name"
     t.datetime "created_at", null: false
@@ -69,19 +91,25 @@ ActiveRecord::Schema.define(version: 2019_06_15_130304) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
     t.integer "company_id"
-    t.integer "rol_id"
+    t.integer "role_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.decimal "monthly_charge"
+    t.string "notes"
     t.integer "image_id"
     t.boolean "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "notes"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center"><h1>List of Places</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>Place name/th>
+			<th>Company Id</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @places.each  do |place|%>
+		<tr>
+			<td><%= place.place_name %></td>
+			<td><%=	place.company_id %></td>
+			<td><%= link_to 'Show',  place_path(place) %></td>
+			<td><%= link_to 'Edit', edit_place_path(place) %></td>
+			<td><%= link_to 'Delete',  place_path(place), method: :delete, data: {confirm: 'Are You Sure'} %></td>
+		</tr>
+		<div>
+		</div>
+		<% end %>
+	</tbody>
+</table>
