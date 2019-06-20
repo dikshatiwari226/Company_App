@@ -1,7 +1,8 @@
 class CountryController < ApplicationController
 	
 	def index
-		@countries = Country.all	
+		@countries = Country.all
+		# @states = CS.states(params[:country])	
 	end
 
 	def new
@@ -17,7 +18,7 @@ class CountryController < ApplicationController
 		end
 	end
 
-	def show
+	def show 
 		@country = Country.find(params[:id])
 	end
 
@@ -39,6 +40,14 @@ class CountryController < ApplicationController
 		@country.destroy
 
 		redirect_to country_index_path
+	end
+
+	def country_select
+		@states = State.where(country_code: params[:country_code])
+
+		 respond_to do |format|
+       format.js {  }
+    end
 	end
 	
 	private	

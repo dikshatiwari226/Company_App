@@ -13,7 +13,7 @@
 		<tr>
 			<td><%= img.user_id %></td>
 			<td><%=	img.real_name %></td>
-			<td><%=	img.image_name %></td>
+			<td><%= image_tag img.image_url.to_s , :size => "260x180" %></td>
 			<td><%= link_to 'Show',  image_path(img) %></td>
 			<td><%= link_to 'Edit', edit_image_path(img) %></td>
 			<td><%= link_to 'Delete',  image_path(img), method: :delete, data: {confirm: 'Are You Sure'} %></td>

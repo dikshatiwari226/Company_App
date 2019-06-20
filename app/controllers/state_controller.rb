@@ -16,7 +16,15 @@ class StateController < ApplicationController
 			render 'new'  		
   	end
   end
+ 
+  def state_select
+    @cities = City.where(state_code: params[:state_code])
 
+    respond_to do |format|
+      format.js {}
+    end  
+  end
+  
   def show
   	@state = State.find(params[:id])
   end
@@ -42,6 +50,6 @@ class StateController < ApplicationController
 
   private
   def state_params
-  	params.require(:state).permit(:state_name)
+  	params.require(:state).permit(:state_name, :country_code)
   end
 end

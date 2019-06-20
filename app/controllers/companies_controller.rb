@@ -8,6 +8,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
+		byebug
 		@company = Company.new(company_params)
 		if @company.save
 			redirect_to @company
@@ -42,6 +43,6 @@ class CompaniesController < ApplicationController
 
 	private 
 	def company_params
-		params.require(:company).permit(:name, :country_id,:state_id, :city_id, :postcode,:startdate,:active)
+		params.require(:company).permit(:name, :country_id,:state_id, :city_id, :postcode, :startdate,:active)
 	end
 end

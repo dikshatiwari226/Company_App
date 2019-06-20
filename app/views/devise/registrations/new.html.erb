@@ -59,7 +59,7 @@
     <div class="form-group col-md-4">
         <%= f.label :end_date, :class=> "col-form-label" %>
         <div class='input-group date'>
-          <%= f.text_field :end_date, :class=>"datepicker1 form-control"%>
+          <%= f.text_field :end_date, :class=>"datepicker form-control"%>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -83,10 +83,6 @@
         <%= f.select :active,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
   </div>
 
-  
-
-  
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
@@ -97,10 +93,9 @@
     $('.datepicker').datepicker('show');
   });
 </script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.datepicker1').datepicker('show');
-  });
+
+<script>
+$('.datepicker').datepicker({format: 'yyyy/mm/dd'});
 </script>
 
 <%= render "devise/shared/links" %>

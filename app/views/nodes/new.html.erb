@@ -8,7 +8,7 @@
 
 	<div  class="form-group d-flex justify-content-center">
 			<%= f.label :place_id, "Place Id:", class: "control-label col-md-3"%>
-			<%= f.select :place_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control col-md-8" %>
+			<%= f.collection_select :place_id, Place.all, :id, :place_name,{}, {:class=>"form-control col-md-8"} %>
 	</div>
 	
 	<div class="offset-md-5">

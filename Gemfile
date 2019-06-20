@@ -67,3 +67,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'ckeditor_rails'
 
 gem 'devise'
+gem 'carrierwave'
+
+gem 'country_state_select'
+
+gem 'activeadmin'

@@ -12,29 +12,35 @@
 					<%= f.label :CompanyName, :class=> "col-sm-2 col-form-label"%>
 				<div class="col-sm-8">
 					<%= f.text_field :name, :class => "form-control", :placeholder=> "Company" %>
-				</div>
+				</div> 
 			</div>
 		</div><br><br><br>
 		
 		<div class="form-row col-md-12">
 			<div class="form-group col-md-4">
 				<%= f.label :Country %>
-				<%#= f.select :country_id, Country.all.map { |country| [country.name, country.id] },{},:class=>"form-control selectpicker" %>
-				<%= f.select :country_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+				<%= f.select :country_id, collection: CountryStateSelect.countries_collection, id: "company_country_id"%>
+				<%#= f.collection_select :country_id, Country.all, :id, :country_name,{}, {class: "form-control"} %>
+				 <%#= select_tag :country_id, options_for_select(CS.all.map { |c| [c[1], c[0]] } ), {class: "form-control"} %>
+				<%#= f.select :country_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
 			</div>
 
 			<div class="form-group col-md-4">
-				<%= f.label :State %>
-				<%= f.select :state_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+					<%= f.label :State %>
+				<div class="state-select-box">
+					<%= f.select :state_id, options_for_select([]) %>
+				</div>
+				<%#= f.select(:state_id, State.all.collect {:prompt => 'Select State', :class=>"form-control" ) %>
+				<%#= f.collection_select :state_id, State.all ,:id,:state_name,{}, {class: "form-control"} %>
 			</div>
 
 			<div class="form-group col-md-4">
 				<%= f.label :City %>
-				<%= f.select :city_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+				<%= f.select :city_id, options_for_select([]) %>
 			</div>
 		</div>
 
-		<div class="col-md-12 form-inline">
+		<div class="col-md-12 form-inline"> 
 			<div class="form-group">
 					<%= f.label :Postcode, :class=> "col-sm-2 col-form-label" %>
 				<div class="col-sm-10">
@@ -79,4 +85,15 @@
   $(document).ready(function(){
     $('.datepicker').datepicker('show');
   });
+
+$('.datepicker').datepicker({format: 'yyyy/mm/dd'});
+
+$('#company_country_id').change(function(){
+	var value = this.value ;
+  $.ajax({
+    url: "/country/country_select",
+    type: "GET",
+    data: {country_code: value  },
+  })
+});
 </script>

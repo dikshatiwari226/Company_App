@@ -2,6 +2,7 @@ class CityController < ApplicationController
 
 	def index
 		@cities = City.all
+		# @cities = CS.get(params[:country], params[:state])
 	end
 
 	def new
@@ -43,6 +44,6 @@ class CityController < ApplicationController
 
 	private
 	def city_params
-		params.require(:city).permit(:city_name)
+		params.require(:city).permit(:city_name,:state_code)
 	end
 end

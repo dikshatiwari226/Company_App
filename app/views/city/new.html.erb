@@ -1,6 +1,13 @@
 <div class="d-flex justify-content-center"><h1>Create City</h1></div><br>
 <%= form_with scope: :city, url: city_index_path, local: true  do |f| %>
 	
+	
+
+	<div class="form-group d-flex justify-content-center">
+		<%= f.label :state_name, "State name:", class: "control-label col-md-3"%>
+		<%= f.text_field :state_code, class: "form-control col-md-8" %>
+	</div>
+	
 	<div class="form-group d-flex justify-content-center">
 			<%= f.label :city_name, "City Name:", class: "control-label col-md-3"%>
 			<%= f.text_field :city_name, class: "form-control col-md-8" %>
