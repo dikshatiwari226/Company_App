@@ -43,11 +43,10 @@ class CountryController < ApplicationController
 	end
 
 	def country_select
-		@states = State.where(country_code: params[:country_code])
-
-		 respond_to do |format|
-       format.js {  }
-    end
+		@states = CS.states(params[:country_code])
+		respond_to do |format|
+       		format.js {  }
+    	end
 	end
 	
 	private	

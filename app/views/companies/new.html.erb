@@ -2,98 +2,101 @@
 
 
 <%= form_with scope: :company, url: companies_path, local: true do |f|%>
+	<div class="container">
 
-
-<div class="container">
-	<div class="row">
-		<form class="form-inline">
-		<div class="col-md-12">
 			<div class="form-group">
-					<%= f.label :CompanyName, :class=> "col-sm-2 col-form-label"%>
+				<%= f.label :CompanyName, :class=> "col-sm-2 col-form-label" %>
 				<div class="col-sm-8">
-					<%= f.text_field :name, :class => "form-control", :placeholder=> "Company" %>
+				<%= f.text_field :name, class: "form-control" %>
 				</div> 
 			</div>
-		</div><br><br><br>
-		
-		<div class="form-row col-md-12">
-			<div class="form-group col-md-4">
-				<%= f.label :Country %>
-				<%= f.select :country_id, collection: CountryStateSelect.countries_collection, id: "company_country_id"%>
-				<%#= f.collection_select :country_id, Country.all, :id, :country_name,{}, {class: "form-control"} %>
-				 <%#= select_tag :country_id, options_for_select(CS.all.map { |c| [c[1], c[0]] } ), {class: "form-control"} %>
-				<%#= f.select :country_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
-			</div>
-
-			<div class="form-group col-md-4">
-					<%= f.label :State %>
-				<div class="state-select-box">
-					<%= f.select :state_id, options_for_select([]) %>
-				</div>
-				<%#= f.select(:state_id, State.all.collect {:prompt => 'Select State', :class=>"form-control" ) %>
-				<%#= f.collection_select :state_id, State.all ,:id,:state_name,{}, {class: "form-control"} %>
-			</div>
-
-			<div class="form-group col-md-4">
-				<%= f.label :City %>
-				<%= f.select :city_id, options_for_select([]) %>
-			</div>
-		</div>
-
-		<div class="col-md-12 form-inline"> 
+			
+			
 			<div class="form-group">
-					<%= f.label :Postcode, :class=> "col-sm-2 col-form-label" %>
-				<div class="col-sm-10">
+				<%= f.label :Country, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8">
+					<%= f.select(:country_id, CS.countries.invert, {}, {id: "company_country_id", class: 'form-control'}) %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :State, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8 state-select-box">
+					<%= f.select(:state_id, options_for_select([]), {}, {class: 'form-control'}) %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :City, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8 city-select-box">
+					<%= f.select(:city_id, options_for_select([]), {}, {class: 'form-control'}) %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :Postcode, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8">
 					<%= f.text_field :postcode, :class=> "form-control", :placeholder=>"Postcode" %>
 				</div>
 			</div>
 
-	    <div class='col-sm-6'>
-	          <div class="form-group">
-	          		<%= f.label :StartDate, :class=> "col-form-label" %>
-	            	<div class='input-group date' id='datepicker1'>
-	              	<%= f.text_field :startdate, :class=>"datepicker"%>
-	                  <span class="input-group-addon">
-	                      <span class="glyphicon glyphicon-calendar"></span>
-	                  </span>
-	              </div>
-	          </div>
-	    </div>
-      	
+			<div class="form-group">
+				<%= f.label :StartDate, :class=>'col-sm-2 col-form-label' %>
+				<div class="col-sm-8"  >
+						<%= f.text_field :startdate, :class=>'form-control myDatePicker', autocomplete: :off %>
+						<span class="input-group-addon ">
+								<span class="glyphicon glyphicon-calendar "></span>
+						</span>
+				</div>
+			</div>
+			
+
+     <!--  <div class="form-group">
+    		<%#= f.label :StartDate, :class=> "col-sm-2 col-form-label" %>
+      	<div class='col-sm-8' id='datepicker1'>
+        	<%#= f.text_field :startdate, :class=> "form-control", autocomplete: :off %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div> -->
+	      	
 
 			<div class="form-group">
-					<div class="form-check">
-						<%= f.check_box :active%>
-						<%= f.label :Active %>
-					</div>
+				<div class="form-check">
+					<%= f.check_box :active%>
+					<%= f.label :Active %>
+				</div>
 			</div>
-		</div><br><br><br>
-				<div class="col-md-4 offset-md-3 btn btn-info">
-					<%= link_to 'Back' , companies_path%>
-				</div>
-				<div class="offset-md-2">
-					<%= f.submit "Save", class: "btn btn-outline-success" %>
-					<%#= f.submit "Cancel", class: "btn btn-outline-warning" %>
-				</div>
-				
-		</form>
+			
+			<div class="btn-group col-md-4 offset-md-3 btn  btn-group-lg">
+				<%= link_to 'Back' , companies_path, class: "btn btn-info btn-outline-success  " %>
+				<%= f.submit "Save", class: "btn btn-info " %>
+  		</div>
+					
 	</div>
-</div>
 
 <% end %>
+
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('.datepicker').datepicker('show');
-  });
+    $(document).ready(function(){
+	    $('.myDatePicker').datepicker({
+	    	format: 'yyyy/mm/dd',
+	    	autoclose: true
+	    });
+	  });
 
-$('.datepicker').datepicker({format: 'yyyy/mm/dd'});
+	$('#company_country_id').change(function(){
+		var value = this.value ;
+	  	$.ajax({
+	    	url: "/country/country_select",
+	    	type: "GET",
+	    	data: {country_code: value },
+	  	})
+	});
 
-$('#company_country_id').change(function(){
-	var value = this.value ;
-  $.ajax({
-    url: "/country/country_select",
-    type: "GET",
-    data: {country_code: value  },
-  })
-});
+
+	
 </script>
+
+

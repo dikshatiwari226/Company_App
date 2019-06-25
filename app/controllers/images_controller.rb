@@ -15,7 +15,7 @@ class ImagesController < ApplicationController
 		else
 			render 'new'
 		end
-	end
+	end  
 
 	def show
 		@image = Image.find(params[:id])

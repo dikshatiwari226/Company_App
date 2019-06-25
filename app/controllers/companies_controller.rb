@@ -8,13 +8,16 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
-		byebug
+		# byebug
+		city = params[:city][:city_name]
+		state = params[:state][:state_name]
 		@company = Company.new(company_params)
-		if @company.save
+		if @company.save!
 			redirect_to @company
 		else
 			render 'new'
 		end
+		@company.update(city_id: city, state_id: state )
 	end
 
 	def show

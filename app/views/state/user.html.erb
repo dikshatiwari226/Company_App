@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center"><h1>Details of Users</h1></div><br>
+
+<table class="table table-striped table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>Name</th>
+			<th>Company name</th>
+			<th>Role</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Monthly Charge</th>
+			<th>Image</th>
+			<th>Active</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<tr>
+			<td><%= current_user.email %></td>
+			<td><%=	current_user.name %></td>
+			<td><%=	current_user.company.try(:name) %></td>
+			<td><%= current_user.user_role.try(:role_name) %></td>
+			<td><%=	current_user.start_date %></td>
+			<td><%= current_user.end_date %></td>
+			<td><%= current_user.monthly_charge %></td>
+			<td><%= image_tag current_user.image_url.to_s , :size => "260x180" %></td>
+			<td><%= current_user.active %></td>
+			</td>
+		</tr>
+		<div>
+		</div>
+		
+	</tbody>
+</table>

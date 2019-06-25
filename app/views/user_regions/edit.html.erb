@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-center"><h1>Edit User Region</h1></div><br>
 <%= form_with(model: @user_region, local: true)  do |f| %>
 	
-	<div class="form-group col-md-4">
-		<%= f.label :User %>
-		<%= f.select :user_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+	<div class="form-group d-flex justify-content-center">
+		<%= f.label :User , "User name:", class: "control-label col-md-3"%>
+		<%= f.collection_select :user_id, User.all, :id, :first_name, {},{:class=>"form-control col-md-8"} %>
 	</div>
-	<div class="form-group col-md-4">
-		<%= f.label :Region %>
-		<%= f.select :region_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+	<div class="form-group d-flex justify-content-center">
+		<%= f.label :Region , "Region:", class: "control-label col-md-3"%>
+		<%= f.collection_select :region_id,Region.all, :id,:region_name, {}, {:class=>"form-control col-md-8"} %>
 	</div>
 
 	

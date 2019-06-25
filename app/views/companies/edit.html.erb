@@ -2,47 +2,162 @@
 
 <%= form_with(model: @company, local: true) do |f| %>
 	<div class="container">
+
+			<div class="form-group">
+				<%= f.label :CompanyName, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8">
+				<%= f.select :company_id, Company.all.map {|c| [ c.name]}, {promt:"Select"}, class: "form-control" %>
+				</div> 
+			</div>
+			
+			
+			<div class="form-group">
+				<%= f.label :Country, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8">
+					<%= f.select(:country_id, CS.countries.invert, {}, {id: "company_country_id", class: 'form-control'}) %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :State, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8 state-select-box">
+					<%= f.select(:state_id, options_for_select([]), {}, {class: 'form-control'}) %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :City, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8 city-select-box">
+					<%= f.select(:city_id, options_for_select([]), {}, {class: 'form-control'}) %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :Postcode, :class=> "col-sm-2 col-form-label" %>
+				<div class="col-sm-8">
+					<%= f.text_field :postcode, :class=> "form-control", :placeholder=>"Postcode" %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :StartDate, :class=>'col-sm-2 col-form-label' %>
+				<div class="col-sm-8"  >
+						<%= f.text_field :startdate, :class=>'form-control myDatePicker', autocomplete: :off %>
+						<span class="input-group-addon ">
+								<span class="glyphicon glyphicon-calendar "></span>
+						</span>
+				</div>
+			</div>
+			
+
+   		<div class="form-group">
+				<div class="form-check">
+					<%= f.check_box :active%>
+					<%= f.label :Active %>
+				</div>
+			</div>
+			
+			<div class="btn-group col-md-4 offset-md-3 btn  btn-group-lg">
+				<%= link_to 'Back' , companies_path, class: "btn btn-info btn-outline-success  " %>
+				<%= f.submit "Save", class: "btn btn-info " %>
+  		</div>
+	</div>
+
+
+
+		<script type="text/javascript">
+	    $(document).ready(function(){
+		    $('.myDatePicker').datepicker({
+		    	format: 'yyyy/mm/dd',
+		    	autoclose: true
+		    });
+		  });
+
+			$('#company_country_id').change(function(){
+				var value = this.value ;
+			  	$.ajax({
+			    	url: "/country/country_select",
+			    	type: "GET",
+			    	data: {country_code: value },
+			  	})
+			});
+		</script>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <div class="container">
 	<div class="row">
-		<form class="form-inline">
 		<div class="col-md-12">
 			<div class="form-group">
-					<%= f.label :CompanyName, :class=> "col-sm-2 col-form-label"%>
+					<%#= f.label :CompanyName, :class=> "col-sm-2 col-form-label"%>
 				<div class="col-sm-8">
-					<%= f.text_field :name, :class => "form-control", :placeholder=> "Company" %>
+					<%#= f.text_field :name, :class => "form-control", :placeholder=> "Company" %>
 				</div>
 			</div>
 		</div><br><br><br>
 		
 		<div class="form-row col-md-12">
 			<div class="form-group col-md-4">
-				<%= f.label :Country %>
-				<%= f.select :country_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+				<%#= f.label :Country %>
+				<%#= f.select :country_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
 			</div>
 
 			<div class="form-group col-md-4">
-				<%= f.label :State %>
-				<%= f.select :state_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+				<%#= f.label :State %>
+				<%#= f.select :state_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
 			</div>
 
 			<div class="form-group col-md-4">
-				<%= f.label :City %>
-				<%= f.select :city_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+				<%#= f.label :City %>
+				<%#= f.select :city_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
 			</div>
 		</div>
 
 		<div class="col-md-12 form-inline">
 			<div class="form-group">
-					<%= f.label :Postcode, :class=> "col-sm-2 col-form-labe" %>
+					<%#= f.label :Postcode, :class=> "col-sm-2 col-form-labe" %>
 				<div class="col-sm-10">
-					<%= f.text_field :postcode, :class=> "form-control", :placeholder=>"Postcode" %>
+					<%#= f.text_field :postcode, :class=> "form-control", :placeholder=>"Postcode" %>
 				</div>
 			</div>
 
       <div class='col-sm-6'>
           <div class="form-group">
-          		<%= f.label :StartDate, :class=> "col-form-labe" %>
+          		<%#= f.label :StartDate, :class=> "col-form-labe" %>
             	<div class='input-group date' id='datepicker1'>
-              	<%= f.text_field :startdate, :class=>"datepicker" %>
+              	<%#= f.text_field :startdate, :class=>"datepicker" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -57,20 +172,18 @@
 
 			<div class="form-group">
 					<div class="form-check">
-						<%= f.check_box :active%>
-						<%= f.label :Active %>
+						<%#= f.check_box :active%>
+						<%#= f.label :Active %>
 					</div>
 			</div>
 		</div><br><br><br>
 				<div class="col-md-4 offset-md-3 btn btn-info">
-					<%= link_to 'Back' , companies_path%>
+					<%#= link_to 'Back' , companies_path%>
 				</div>
 				<div class="offset-md-2">
-					<%= f.submit "Save", class: "btn btn-outline-success" %>
+					<%#= f.submit "Save", class: "btn btn-outline-success" %>
 					<%#= f.submit "Cancel", class: "btn btn-outline-warning" %>
 				</div>
 				
-		</form>
 	</div>
-</div>
-<% end %>
+</div> -->

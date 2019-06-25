@@ -34,20 +34,20 @@
   </div>
   
   <div class="form-group col-md-4">
-        <%= f.label :company_id %>
-        <%= f.select :company_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+    <%= f.label :Company%>
+    <%= f.select :company_id, Company.all.map {|c| [c.name, c.id]}, {promt:"Select"}, class: "form-control" %>
   </div>
 
   <div class="form-group col-md-4">
-        <%= f.label :role_id %>
-        <%= f.select :role_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+      <%= f.label :user_role_id %>
+      <%= f.select :user_role_id, UserRole.all.map {|r| [r.role_name, r.id]}, {prompt: "Select"}, class: "form-control"%>
   </div>
 
   <div>
     <div class="form-group col-md-4">
         <%= f.label :start_date, :class=> "col-form-label" %>
         <div class='input-group date'>
-          <%= f.text_field :start_date, :class=>"datepicker form-control"%>
+          <%= f.text_field :start_date, :class=>"datepicker form-control" ,autocomplete: :off%>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -59,7 +59,7 @@
     <div class="form-group col-md-4">
         <%= f.label :end_date, :class=> "col-form-label" %>
         <div class='input-group date'>
-          <%= f.text_field :end_date, :class=>"datepicker form-control"%>
+          <%= f.text_field :end_date, :class=>"datepicker form-control", autocomplete: :off%>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -72,15 +72,17 @@
     <%= f.text_field :monthly_charge, autofocus: true, autocomplete: "Monthly_charge",:class=>"form-control"  %>
   </div>
 
-   <div class="form-group col-md-4">
-        <%= f.label :image_id %>
-        <%= f.select :image_id,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+  <div class="form-group col-md-4">
+    <%= f.label :image, "Image:", class: "control-label "%>
+    <%= f.file_field :image, class: "form-control" %>
   </div>
 
 
-   <div class="form-group col-md-4">
-        <%= f.label :active %>
-        <%= f.select :active,[["Apple", 1], ["Grape", 2]], { class: "selectpicker" },:class=>"form-control" %>
+  <div class="form-group">
+    <div class="form-check">
+      <%= f.check_box :active%>
+      <%= f.label :Active %>
+    </div>
   </div>
 
   <div class="actions">
@@ -89,13 +91,12 @@
 <% end %>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('.datepicker').datepicker('show');
-  });
+  $('.datepicker').datepicker({
+      format: 'yyyy/mm/dd',
+      autoclose: true
+    });
 </script>
 
-<script>
-$('.datepicker').datepicker({format: 'yyyy/mm/dd'});
-</script>
+
 
 <%= render "devise/shared/links" %>

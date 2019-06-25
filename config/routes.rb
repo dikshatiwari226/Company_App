@@ -15,13 +15,20 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :state
+  resources :state do
+    collection do
+      get :state_select
+      get :user
+    end
+  end
+  
   resources :city
   resources	:user_regions
   resources :regions
   resources :images
   resources :places
   resources :nodes
+  
 
   get 'welcome/index'
 

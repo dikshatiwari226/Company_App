@@ -1,15 +1,15 @@
-<%= select_tag "state[state_name]", options_from_collection_for_select(@states, "id", "state_name") %>
+<%= select_tag "state[state_name]", options_from_collection_for_select(@states, :first, :last), class: "form-control" %>
 
 
 <script type="text/javascript">
 	
 	$('#state_state_name').change(function(){
-		debugger
 		var value = this.value;
+		var country_code = $("#company_country_id").val();
 		$.ajax({
-			url: "/state/state_Select",
+			url: "/state/state_select",
 			type: "GET",
-			data: {state_code: value},
-	})
-});
+			data: {state_code: value, country_code: country_code},
+		})
+	});
 </script>

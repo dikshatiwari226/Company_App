@@ -2,12 +2,12 @@
 
 <p>
 	<strong>User:</strong>
-	<%= @user_region.user_id %>
+	<%= @user_region.user.name %>
 </p>
 <p>
 	<strong>Region:</strong>
-	<%= @user_region.region_id %>
+	<%= @user_region.region.region_name %>
 </p>
 <div>
 	<%= link_to 'Back' , user_regions_path, :class=> "btn btn-outline-danger"%>
-</div>
+</div> 

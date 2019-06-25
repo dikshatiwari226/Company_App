@@ -18,7 +18,7 @@ class StateController < ApplicationController
   end
  
   def state_select
-    @cities = City.where(state_code: params[:state_code])
+    @cities = CS.get(params[:country_code], params[:state_code])
 
     respond_to do |format|
       format.js {}
@@ -46,6 +46,9 @@ class StateController < ApplicationController
   	@state = State.find(params[:id])
   	@state.destroy
   	redirect_to state_index_path
+  end
+
+  def user
   end
 
   private

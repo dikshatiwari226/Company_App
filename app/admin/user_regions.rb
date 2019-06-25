@@ -11,6 +11,8 @@ ActiveAdmin.register UserRegion do
 		column :region_id
 	end
 
+	
+
 	show do
 		attributes_table :user_id, :region_id
 	end

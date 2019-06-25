@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.1'
+ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -71,4 +71,6 @@ gem 'carrierwave'
 
 gem 'country_state_select'
 
-gem 'activeadmin'
+# gem 'activeadmin'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'bootstrap-glyphicons'

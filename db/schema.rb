@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_101921) do
+ActiveRecord::Schema.define(version: 2019_06_25_124837) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2019_06_20_101921) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.integer "country_id"
-    t.integer "state_id"
-    t.integer "city_id"
+    t.string "country_id"
+    t.string "state_id"
+    t.string "city_id"
     t.string "postcode"
     t.datetime "startdate"
     t.boolean "active"
@@ -129,13 +129,13 @@ ActiveRecord::Schema.define(version: 2019_06_20_101921) do
     t.string "first_name"
     t.string "last_name"
     t.integer "company_id"
-    t.integer "role_id"
+    t.integer "user_role_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.decimal "monthly_charge"
     t.string "notes"
-    t.integer "image_id"
     t.boolean "active"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

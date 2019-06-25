@@ -13,8 +13,8 @@
 	<tbody>
 		<% @user_regions.each  do |ur|%>
 		<tr>
-			<td><%= ur.user_id %></td>
-			<td><%= ur.region_id %></td>
+			<td><%=  ur.user.name %></td>
+			<td><%= ur.region.region_name %></td>
 			<td><%= link_to 'Show',  user_region_path(ur) %></td>
 			<td><%= link_to 'Edit',  edit_user_region_path(ur) %></td>
 			<td><%= link_to 'Delete',  user_region_path(ur), method: :delete, data: {confirm: 'Are You Sure'} %></td>

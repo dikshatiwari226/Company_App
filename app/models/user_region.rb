@@ -1,2 +1,6 @@
 class UserRegion < ApplicationRecord
-end
+
+	belongs_to :user
+	belongs_to :region
+
+end 
